@@ -32,15 +32,6 @@ The data set provided contains information about Rockbuster's film inventory, cu
 - Canvas for presenting findings
 - Tableau for data visualization
 
-## Usage
-
-To replicate the analysis or explore the code further:
-
-1. Clone this repository to your local machine.
-2. Install PostgreSQL and set up the database according to the provided instructions.
-3. Use SQL queries to analyze the data and answer the key questions.
-4. Visualize the results using Excel, Canvas, and Tableau.
-5. Prepare a presentation of the findings for the Rockbuster Stealth Management Board.
 
 
 ## License
