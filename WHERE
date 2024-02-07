@@ -9,7 +9,6 @@ INNER JOIN city C ON B.city_id = C.city_id
 INNER JOIN country D ON C.country_id = D.country_id
 WHERE D.country IN ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil',
 		'Russian Federation', 'Philippines', 'Turkey', 'Indonesia')
-
 GROUP BY city, country
 ORDER BY customer_count DESC
 LIMIT 10
