@@ -1,0 +1,88 @@
+Find TOP 10 movies highest amount contributed
+
+SELECT A.title AS top_10_movies,
+SUM (amount) AS total_revenue
+FROM film A
+INNER JOIN inventory B on A.film_id = B.film_id
+INNER JOIN  rental C on B.inventory_id = c.inventory_id
+INNER JOIN payment D on C.rental_id = D.rental_id
+GROUP BY top_10_movies
+ORDER BY total_revenue ASC
+LIMIT 10;
+
+
+
+
+
+Find BOTTOM 10 movies lowest amount contributed
+
+SELECT A.title AS bottom_10_movies,
+SUM (amount) AS total_revenue
+FROM film A
+INNER JOIN inventory B on A.film_id = B.film_id
+INNER JOIN  rental C on B.inventory_id = c.inventory_id
+INNER JOIN payment D on C.rental_id = D.rental_id
+GROUP BY bottom_10_movies
+ORDER BY total_revenue ASC
+LIMIT 10; 
+
+
+
+
+Movie revenue by genre
+
+SELECT A.name AS genre_name, 
+SUM(amount) AS revenue 
+FROM category 
+A INNER JOIN film_category B on A.category_id = B.category_id
+INNER JOIN inventory C on B.film_id = C.film_id 
+INNER JOIN rental D on C.inventory_id = D.inventory_id 
+INNER JOIN payment E on D.rental_id = E.rental_id GROUP BY genre_name 
+ORDER BY revenue DESC 
+
+
+
+Revenue by country
+
+SELECT E.country, 
+SUM(amount) AS total_sales 
+FROM payment A  
+INNER JOIN customer B on A.customer_id = B.customer_id 
+INNER JOIN address C on B.address_id = C.address_id 
+INNER JOIN city D on C.city_id = D.city_id
+INNER JOIN country E on D.country_id = E.country_id 
+GROUP BY country 
+ORDER BY total_sales DESC; 
+
+
+
+Where are the Rockbuster's customers based in?
+
+SELECT D. country,				
+COUNT(customer_id) AS count_of_customer	
+FROM customer A			
+INNER JOIN address B on A.address_id = B.address_id		
+INNER JOIN city C on B.city_id = C.city_id			
+INNER JOIN country D on C.country_id = D.country_id	
+GROUP BY country			
+ORDER BY count_of_customer DESC;
+
+
+
+
+DATA SUMMARY
+(Rental Rate, Rental Duration, Replacement Cost, Film Lenght)                            
+
+SELECT MIN(rental_rate) AS min_rent,        				                        
+MAX(rental_rate) AS max_rent,        
+AVG(rental_rate) AS avg_rent,        
+MIN(rental_duration) AS min_duration,        				
+MAX(rental_duration) AS max_duration,        
+AVG(rental_duration) AS avg_duration,    
+MIN(length) AS min_length,        
+MAX(length) AS max_length,        				
+AVG(length) AS avg_length,   
+ MIN(replacement_cost) AS min_cost,       
+ MAX(replacement_cost) AS max_cost,        
+AVG(replacement_cost) AS avg_cost 
+FROM film; 
