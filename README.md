@@ -1,4 +1,4 @@
-# scripts-sqlserver
+
 Repository to store my SQL queries 
 
 # Rockbuster Stealth Data Analysis Project
